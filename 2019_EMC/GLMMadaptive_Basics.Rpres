@@ -1,4 +1,4 @@
-Adaptive: Mixed Models with Adaptive Gaussian Quadrature
+GLMMadaptive: Mixed Models with Adaptive Gaussian Quadrature
 ========================================================
 author: Dimitris Rizopoulos
 date: `r Sys.Date()`

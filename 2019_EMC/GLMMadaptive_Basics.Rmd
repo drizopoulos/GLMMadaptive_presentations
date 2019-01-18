@@ -1,0 +1,30 @@
+---
+title: "GLMMadaptive: Mixed Models for Non-Normal Data in R"
+author: "Dimitris Rizopoulos"
+date: "February 6"
+output:
+  ioslides_presentation:
+    css: pres.css
+    widescreen: yes
+    mathjax: default
+    logo: emc.png
+transition: none
+runtime: shiny
+---
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+</script>
+
+
+
+## Motivation
+
+<br/>
+
+- Mixed effects constitute a versatile modeling framework
+    + Longitudinal data
+    + Clustered data
+    + Multilevel data
+    + ...
+    

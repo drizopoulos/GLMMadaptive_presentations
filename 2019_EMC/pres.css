@@ -1,0 +1,31 @@
+h2 { 
+ font-size:1.7em; 
+ color: blue;
+}
+
+p2 {
+    text-align: center;
+}
+
+ul { 
+ color: black;
+}
+
+.gdbar img {
+  width: 300px !important;
+  height: 150px !important;
+  margin: 8px 8px;
+}
+
+.gdbar {
+  width: 0px !important;
+  height: 170px !important;
+}
+
+slides > slide:not(.nobackground):before {
+  width: 250px;
+  height: 125px;
+  background-size: 200px 100px;
+  bottom: 575px;
+  left: 875px;
+}

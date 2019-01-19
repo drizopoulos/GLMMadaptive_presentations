@@ -1,5 +1,5 @@
 ---
-title: "GLMMadaptive: Mixed Models for Non-Normal Data in R"
+title: "GLMMadaptive:<br/>Mixed Models for Non-Normal Data in R"
 author: "Dimitris Rizopoulos"
 date: "February 6"
 output:
@@ -16,15 +16,302 @@ runtime: shiny
   MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 </script>
 
+# Motivation
 
-
-## Motivation
+## Mixed Models
 
 <br/>
 
-- Mixed effects constitute a versatile modeling framework
+- Mixed effects models have numerous applications
     + Longitudinal data
     + Clustered data
     + Multilevel data
     + ...
+
+
+## The Basic Idea
+
+<br/>
+
+- We have a grouped outcome $Y$
+    + measurements in the same group(s) are correlated
+
+<br/>
+
+- Correlations are modeled via random effects $b$
+    + measurements in the same group share the same random effect
+
+## Mathematical Definition - 1
+
+- A general definition of mixed models:
+$$
+\left \{
+\begin{array}{ccl}
+Y \mid b & \sim & \mathcal F(\theta_y)\\&&\\
+b & \sim & \mathcal N(0, D)\\
+\end{array}
+\right.
+$$
+<br/>
+    + the distribution $\mathcal F$ depends on the outcome
+    + the random effects most often are assumed normally distributed
+    + $\theta = (\theta_y^\top, \mbox{vech}(D)^\top)^\top$ are the model parameters
+
+## Mathematical Definition - 2
+
+- To estimate mixed models under maximum likelihood we need
+the marginal log-likelihood function
+$$
+\ell(\theta) = \sum_{i = 1}^n \log \int p(y_i \mid b_i; \theta) \, p(b_i; \theta) \; db_i
+$$ 
+<div style = "padding:120px">
+<font color = "red">To estimate mixed models we need to solve the integral</font>
+</div>
+
+## Normal vs the Rest - 1
+
+- The random effects $b$ are assumed to have a (multivariate) normal distribution
+
+<br/>
+
+- When 
+    + the outcome $Y$ also has a normal distribution,
+    + the random effects enter linearly in the linear predictor
     
+<font, color = "black">the integral can be solved *analytically*</font>
+
+<div style = "padding:50px">
+${\color{blue} \Rightarrow}$ <font color = "blue">Easy to program</font> 
+${\color{blue} \Rightarrow}$ <font color = "blue">Stable algorithms available in most software</font>
+</div>
+
+## Normal vs the Rest - 2
+
+<br/>
+
+- However, in all other cases these integrals cannot be solved analytically
+
+<br/>
+
+<div style = "padding:50px">
+${\color{red} \Rightarrow}$ <font color = "red">Much more difficult to program</font> 
+${\color{red} \Rightarrow}$ <font color = "red">Less options available in most software</font>
+</div>
+
+# Estimation
+
+## How to solve the integrals
+
+- Two general solutions
+
+<br/>
+
+- Approximation of the integrand
+    + make it look as normal for which we know the solution
+
+- Approximation of the integral
+    + finite sum over a grid
+
+
+## Popular Available options
+
+- Approximation of the integrand
+    + Penalized Quasi Likelihood
+    + Laplace approximation
+    
+<br/>
+
+- Approximation of the integral
+    + adaptive Gaussian quadrature
+    + Monte Carlo (rejection & importance sampling)
+
+## Which to choose
+
+- Penalized Quasi Likelihood: generally not good
+
+<br/>
+
+- Laplace: needs many repeated measurements per subjects
+    + it does not work well with binary data and Poisson with low counts
+
+<br/>
+
+- adaptive Gassian quadrature: Gold standard
+    + computational intensive
+
+<br/>
+
+- Monte Carlo: requires fine tuning
+    + no clear winner algorithm
+
+# What is available in R
+
+## Mixed Model Packages in R - 1
+
+- **lme4**
+    + Laplace approximation as default
+    + adaptive Gaussian quadrature only for scalar radnom effects
+    
+<br/>
+
+- **glmmTMB**
+    + more flexible than **lme4**
+    + Laplace approximation
+
+<br/>
+    
+- **glmmsr**
+    + Monte Carlo importance sampling
+    
+## Mixed Model Packages in R - 2
+
+<br/>
+<br/>
+
+<div style="float: center; text-align: center; width: 750px; border: 3px solid black">
+<br/><br/>
+<strong><font size="6" color = "red">Need for adaptive GH for ${\color{red} > 1}$ random effects</font></strong>
+<br/><br/>
+</div>
+
+## A New Package
+
+<br/>
+
+- **GLMMadaptive** has been written to fill this gap
+
+<br/>
+
+- Principles
+    + User-friendly
+    + Satisfy the needs of most users
+    + Give advanced users the option to extend it
+    + Well documented
+    
+
+# What GLMMadaptive offers
+
+## Model Fitting
+
+- The basic model fitting function is `mixed_model(...)`
+
+<br/>
+
+- Required arguments
+    + `fixed` a formula for the fixed effects
+    + `random` a formula for the random effects
+    + `data` a data frame containing the variables to use
+    + `family` a family object specifying the model
+
+## Available Models: Standard GLMMs
+
+<br/>
+
+- It fits the most frequently-used GLMMs
+    + mixed effects logistic regression `family = binomial()`
+    + mixed effects Poisson regression `family = poisson()`
+    
+
+## Available Models: Specialized GLMMs - 1
+
+<br/>
+
+- It fits some non-standard GLMMs
+    + negative binomial mixed model `family = negative.binomial()`
+    + Student's-t mixed model `family = students.t()`
+    + Beta mixed model `family = beta.fam()`
+
+## Available Models: Specialized GLMMs - 2
+
+<br/>
+
+- Zero-inflated mixed models
+    + zero-inflated Poisson `family = zi.poisson()`
+    + zero-inflated negative binomial `family = zi.negative.binomial()`
+
+## Available Models: Specialized GLMMs - 3
+
+<br/>
+
+- Hurdle mixed models
+    + hurdle Poisson `family = hurdle.poisson()`
+    + hurdle negative binomial `family = hurdle.negative.binomial()`
+    + hudle log-normal `family = hurdle.lognormal()`
+    + hurdle Beta `family = hurdle.beta.fam()`
+    
+## User-defined Models
+
+<br/>
+
+- The user can define its own mixed model using a user-defined `family` object
+    + specify log-density function
+    + specify derivatives (optional)
+
+## What the user needs - 1
+
+- Estimated coefficients, standard errors & p-values
+    + also marginal coefficients
+
+<br/>
+
+- Hypothesis testing
+    + Wald tests
+    + likelihood ratio tests
+    + AIC/BIC
+
+## What the user needs - 2
+
+- Effects Plots
+    + build-in `effectPlotData()`
+    + support for **effects**
+    + support for **ggeffects**
+    + support for **emmeans**
+
+<br/>
+
+- Multiple testing
+    + support for **emmeans**
+    + support for **multcomp**
+
+## What the user needs - 3
+
+- Goodness of Fit
+    + support for **DHARMa**
+
+<br/>
+
+- Predictions via `predict()` method
+    + average subject
+    + marginal
+    + subject-specific
+    + dynamic subject-specific
+    + confidence & prediction intervals
+    + proper scoring rules via `scoring_rules()`
+
+## Documentation
+
+<br/>
+
+- 8 vignettes describing in detail and with examples the above & more
+
+<br/>
+
+- Up-to-date help files
+
+<br/>
+
+- Specialized website: [https://drizopoulos.github.io/GLMMadaptive/](https://drizopoulos.github.io/GLMMadaptive/)
+    
+# What the future holds...
+
+## Future Plans
+
+- Implement nested random effects
+    + using **Matrix** sparse matrices classes
+
+<br/>
+
+- Extra models
+    + Conway-Maxwell-Poisson mixed model
+    + ...
+

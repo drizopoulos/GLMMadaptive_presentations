@@ -205,12 +205,16 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
 
 ## Available Models: Standard GLMMs
 
-<br/>
-
 - It fits the most frequently-used GLMMs
     + mixed effects logistic regression `family = binomial()`
     + mixed effects Poisson regression `family = poisson()`
-    
+
+- A basic example:
+```r
+mixed_model(y ~ time * group, random = ~ time | id, data = DF,
+            family = binomial(), nAGQ = 15)
+```
+
 ```r
 vignette("GLMMadaptive_basics", package = "GLMMadaptive")
 ```
@@ -277,12 +281,16 @@ vignette("Methods_MixMod", package = "GLMMadaptive")
 ```
 ## What the user needs - 3
 
+<br/>
+
 - Goodness of Fit
     + support for **DHARMa**
 
 ```r
 vignette("Goodness_of_Fit", package = "GLMMadaptive")
 ```
+
+- Caveat: missing data
 
 ## What the user needs - 4
 

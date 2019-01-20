@@ -398,8 +398,6 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 
 </article></slide><slide class=""><hgroup><h2>Available Models: Standard GLMMs</h2></hgroup><article  id="available-models-standard-glmms">
 
-<p><br/></p>
-
 <ul>
 <li>It fits the most frequently-used GLMMs
 
@@ -407,6 +405,10 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 <li>mixed effects logistic regression <code>family = binomial()</code></li>
 <li>mixed effects Poisson regression <code>family = poisson()</code></li>
 </ul></li>
+<li><p>A basic example:</p>
+
+<pre class = 'prettyprint lang-r'>mixed_model(y ~ time * group, random = ~ time | id, data = DF,
+        family = binomial(), nAGQ = 15)</pre></li>
 </ul>
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;GLMMadaptive_basics&quot;, package = &quot;GLMMadaptive&quot;)</pre>
@@ -500,6 +502,8 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 
 </article></slide><slide class=""><hgroup><h2>What the user needs - 3</h2></hgroup><article  id="what-the-user-needs---3">
 
+<p><br/></p>
+
 <ul>
 <li>Goodness of Fit
 
@@ -509,6 +513,10 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 </ul>
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;Goodness_of_Fit&quot;, package = &quot;GLMMadaptive&quot;)</pre>
+
+<ul>
+<li>Caveat: missing data</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>What the user needs - 4</h2></hgroup><article  id="what-the-user-needs---4">
 

@@ -211,6 +211,9 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
     + mixed effects logistic regression `family = binomial()`
     + mixed effects Poisson regression `family = poisson()`
     
+```r
+vignette("GLMMadaptive_basics", package = "GLMMadaptive")
+```
 
 ## Available Models: Specialized GLMMs - 1
 
@@ -223,13 +226,9 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
 
 ## Available Models: Specialized GLMMs - 2
 
-<br/>
-
 - Zero-inflated mixed models
     + zero-inflated Poisson `family = zi.poisson()`
     + zero-inflated negative binomial `family = zi.negative.binomial()`
-
-## Available Models: Specialized GLMMs - 3
 
 <br/>
 
@@ -238,6 +237,10 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
     + hurdle negative binomial `family = hurdle.negative.binomial()`
     + hudle log-normal `family = hurdle.lognormal()`
     + hurdle Beta `family = hurdle.beta.fam()`
+
+```r
+vignette("ZeroInflated_and_TwoPart_Models", package = "GLMMadaptive")
+```
     
 ## User-defined Models
 
@@ -246,11 +249,14 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
 - The user can define its own mixed model using a user-defined `family` object
     + specify log-density function
     + specify derivatives (optional)
+    
+```r
+vignette("Custom_Models", package = "GLMMadaptive")
+```
 
 ## What the user needs - 1
 
 - Estimated coefficients, standard errors & p-values
-    + also marginal coefficients
 
 <br/>
 
@@ -265,20 +271,32 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
     + build-in `effectPlotData()`
     + support for **effects**
     + support for **ggeffects**
-    + support for **emmeans**
 
-<br/>
-
-- Multiple testing
-    + support for **emmeans**
-    + support for **multcomp**
-
+```r
+vignette("Methods_MixMod", package = "GLMMadaptive")
+```
 ## What the user needs - 3
 
 - Goodness of Fit
     + support for **DHARMa**
 
+```r
+vignette("Goodness_of_Fit", package = "GLMMadaptive")
+```
+
+## What the user needs - 4
+
 <br/>
+
+- Multiple comparisons
+    + support for **emmeans**
+    + support for **multcomp**
+
+```r
+vignette("Multiple_Comparisons", package = "GLMMadaptive")
+```
+
+## What the user needs - 5
 
 - Predictions via `predict()` method
     + average subject
@@ -288,11 +306,11 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
     + confidence & prediction intervals
     + proper scoring rules via `scoring_rules()`
 
+```r
+vignette("Methods_MixMod", package = "GLMMadaptive")
+vignette("Dynamic_Predictions", package = "GLMMadaptive")
+```
 ## Documentation
-
-<br/>
-
-- 8 vignettes describing in detail and with examples the above & more
 
 <br/>
 

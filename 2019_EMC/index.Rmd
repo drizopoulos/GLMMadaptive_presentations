@@ -322,7 +322,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 ## A Few Extras
 
 - Marginalized coefficients
-    + with nonlinear link function fixed effects have an interprtation conditional on the random effects
+    + with nonlinear link function fixed effects have an interpretation conditional on the random effects
     + function `marginal_coefs()` implements Hedeker et al. solution with standard errors
 
 <br/>

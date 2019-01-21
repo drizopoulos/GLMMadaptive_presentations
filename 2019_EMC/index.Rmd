@@ -9,7 +9,6 @@ output:
     mathjax: default
     logo: emc.png
 transition: none
-runtime: shiny
 ---
 
 <script type="text/x-mathjax-config">
@@ -95,21 +94,21 @@ ${\color{blue} \Rightarrow}$ <font color = "blue">Stable algorithms available in
 
 <div style = "padding:50px">
 ${\color{red} \Rightarrow}$ <font color = "red">Much more difficult to program</font> 
-${\color{red} \Rightarrow}$ <font color = "red">Less options available in most software</font>
+${\color{red} \Rightarrow}$ <font color = "red">Less options available in software</font>
 </div>
 
 # Estimation
 
-## How to solve the integrals
+## How to Solve the Integrals
 
 - Two general solutions
 
 <br/>
 
-- Approximation of the integrand
+1. Approximation of the integrand
     + make it look as normal for which we know the solution
-
-- Approximation of the integral
+    <br/><br/>
+2. Approximation of the integral
     + finite sum over a grid
 
 
@@ -136,7 +135,7 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
 
 <br/>
 
-- adaptive Gassian quadrature: Gold standard
+- adaptive Gaussian quadrature: Gold standard
     + computational intensive
 
 <br/>
@@ -239,7 +238,7 @@ vignette("GLMMadaptive_basics", package = "GLMMadaptive")
 - Hurdle mixed models
     + hurdle Poisson `family = hurdle.poisson()`
     + hurdle negative binomial `family = hurdle.negative.binomial()`
-    + hudle log-normal `family = hurdle.lognormal()`
+    + hurdle log-normal `family = hurdle.lognormal()`
     + hurdle Beta `family = hurdle.beta.fam()`
 
 ```r
@@ -344,4 +343,5 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 - Extra models
     + Conway-Maxwell-Poisson mixed model
     + ...
+
 

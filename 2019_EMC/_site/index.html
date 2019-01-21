@@ -42,11 +42,6 @@
     };
   </script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-  <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-  <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-  <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
   <link href="site_libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
   <link href="site_libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
   <link href="site_libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
@@ -230,11 +225,11 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 <p><br/></p>
 
 <div style="padding:50px">
-<p>\({\color{red} \Rightarrow}\) <font color = "red">Much more difficult to program</font> \({\color{red} \Rightarrow}\) <font color = "red">Less options available in most software</font></p></div>
+<p>\({\color{red} \Rightarrow}\) <font color = "red">Much more difficult to program</font> \({\color{red} \Rightarrow}\) <font color = "red">Less options available in software</font></p></div>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Estimation</h2></hgroup><article  id="estimation">
 
-</article></slide><slide class=""><hgroup><h2>How to solve the integrals</h2></hgroup><article  id="how-to-solve-the-integrals">
+</article></slide><slide class=""><hgroup><h2>How to Solve the Integrals</h2></hgroup><article  id="how-to-solve-the-integrals">
 
 <ul>
 <li>Two general solutions</li>
@@ -242,18 +237,18 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 
 <p><br/></p>
 
-<ul>
+<ol>
 <li>Approximation of the integrand
 
 <ul>
-<li>make it look as normal for which we know the solution</li>
+<li>make it look as normal for which we know the solution <br/><br/></li>
 </ul></li>
 <li>Approximation of the integral
 
 <ul>
 <li>finite sum over a grid</li>
 </ul></li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Popular Available options</h2></hgroup><article  id="popular-available-options">
 
@@ -296,7 +291,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 <p><br/></p>
 
 <ul>
-<li>adaptive Gassian quadrature: Gold standard
+<li>adaptive Gaussian quadrature: Gold standard
 
 <ul>
 <li>computational intensive</li>
@@ -322,7 +317,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 
 <ul>
 <li>Laplace approximation as default</li>
-<li>adaptive Gaussian quadrature only for scalar radnom effects</li>
+<li>adaptive Gaussian quadrature only for scalar random effects</li>
 </ul></li>
 </ul>
 
@@ -446,7 +441,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 <ul>
 <li>hurdle Poisson <code>family = hurdle.poisson()</code></li>
 <li>hurdle negative binomial <code>family = hurdle.negative.binomial()</code></li>
-<li>hudle log-normal <code>family = hurdle.lognormal()</code></li>
+<li>hurdle log-normal <code>family = hurdle.lognormal()</code></li>
 <li>hurdle Beta <code>family = hurdle.beta.fam()</code></li>
 </ul></li>
 </ul>
@@ -550,6 +545,8 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;Methods_MixMod&quot;, package = &quot;GLMMadaptive&quot;)
 vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</pre>
+
+</article></slide><slide class=""><hgroup><h2>A few extras</h2></hgroup><article  id="a-few-extras">
 
 </article></slide><slide class=""><hgroup><h2>Documentation</h2></hgroup><article  id="documentation">
 

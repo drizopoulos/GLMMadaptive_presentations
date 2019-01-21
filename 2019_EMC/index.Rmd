@@ -150,7 +150,7 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in most s
 
 - **lme4**
     + Laplace approximation as default
-    + adaptive Gaussian quadrature only for scalar radnom effects
+    + adaptive Gaussian quadrature only for scalar random effects
     
 <br/>
 

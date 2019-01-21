@@ -546,7 +546,27 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 <pre class = 'prettyprint lang-r'>vignette(&quot;Methods_MixMod&quot;, package = &quot;GLMMadaptive&quot;)
 vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>A few extras</h2></hgroup><article  id="a-few-extras">
+</article></slide><slide class=""><hgroup><h2>A Few Extras</h2></hgroup><article  id="a-few-extras">
+
+<ul>
+<li>Marginalized coefficients
+
+<ul>
+<li>with nonlinear link function fixed effects have an interprtation conditional on the random effects</li>
+<li>function <code>marginal_coefs()</code> implements Hedeker et al. solution with standard errors</li>
+</ul></li>
+</ul>
+
+<p><br/></p>
+
+<ul>
+<li>Separation issues
+
+<ul>
+<li>in logistic, Poisson and negative binomial case we may (complete) separation issues</li>
+<li>invoking the <code>penalized</code> argument of <code>mixed_model()</code> a Student&#39;s t penalty is placed on the fixed effects</li>
+</ul></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Documentation</h2></hgroup><article  id="documentation">
 

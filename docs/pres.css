@@ -11,6 +11,14 @@ ul {
  color: black;
 }
 
+ol { 
+ color: black;
+}
+
+body {
+ color: black;
+}
+
 .gdbar img {
   width: 300px !important;
   height: 150px !important;

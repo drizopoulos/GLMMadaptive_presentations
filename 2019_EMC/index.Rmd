@@ -318,7 +318,17 @@ vignette("Methods_MixMod", package = "GLMMadaptive")
 vignette("Dynamic_Predictions", package = "GLMMadaptive")
 ```
 
-## A few extras
+## A Few Extras
+
+- Marginalized coefficients
+    + with nonlinear link function fixed effects have an interprtation conditional on the random effects
+    + function `marginal_coefs()` implements Hedeker et al. solution with standard errors
+
+<br/>
+
+- Separation issues
+    + in logistic, Poisson and negative binomial case we may (complete) separation issues
+    + invoking the `penalized` argument of `mixed_model()` a Student's t penalty is placed on the fixed effects 
 
 
 ## Documentation

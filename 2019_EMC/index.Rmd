@@ -318,6 +318,10 @@ vignette("Multiple_Comparisons", package = "GLMMadaptive")
 vignette("Methods_MixMod", package = "GLMMadaptive")
 vignette("Dynamic_Predictions", package = "GLMMadaptive")
 ```
+
+## A few extras
+
+
 ## Documentation
 
 <br/>

@@ -9,6 +9,7 @@ output:
     mathjax: default
     logo: emc.png
 transition: none
+runtime: shiny
 ---
 
 <script type="text/x-mathjax-config">

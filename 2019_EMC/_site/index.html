@@ -382,7 +382,7 @@ fm_AGQ15 &lt;-  glmer(outcome ~ time * treatment + (1 | patientID),
 
 <ul>
 <li>mixed effects truncated Poisson</li>
-<li><font color = "red">(sploiler alert: Code) </font></li>
+<li><font color = "red">(spoiler alert: Code) </font></li>
 </ul></li>
 </ul>
 
@@ -535,13 +535,13 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 </article></slide><slide class=""><hgroup><h2>What the user needs - 1</h2></hgroup><article  id="what-the-user-needs---1">
 
 <ul>
-<li>Estimated coefficients, standard errors &amp; p-values</li>
+<li>Estimated coefficients, standard errors &amp; p-values: <code>summary()</code></li>
 </ul>
 
 <p><br/></p>
 
 <ul>
-<li>Hypothesis testing
+<li>Hypothesis testing <code>anova()</code>
 
 <ul>
 <li>Wald tests</li>
@@ -573,14 +573,11 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 
 <ul>
 <li>support for <strong>DHARMa</strong></li>
+<li><font color = "red">caveat:</font> MAR missing data</li>
 </ul></li>
 </ul>
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;Goodness_of_Fit&quot;, package = &quot;GLMMadaptive&quot;)</pre>
-
-<ul>
-<li>Caveat: missing data</li>
-</ul>
 
 </article></slide><slide class=""><hgroup><h2>What the user needs - 4</h2></hgroup><article  id="what-the-user-needs---4">
 
@@ -615,6 +612,26 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 <pre class = 'prettyprint lang-r'>vignette(&quot;Methods_MixMod&quot;, package = &quot;GLMMadaptive&quot;)
 vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</pre>
 
+</article></slide><slide class=""><hgroup><h2>What the user needs - 6</h2></hgroup><article  id="what-the-user-needs---6">
+
+<ul>
+<li>Methods for standard generics
+
+<ul>
+<li><code>confint()</code>, <code>vcov()</code> including the sandwich estimator</li>
+<li><code>coef()</code>, <code>fixef()</code>, <code>ranef()</code></li>
+<li><code>logLik()</code>, <code>nobs()</code></li>
+<li><code>fitted()</code>, <code>residuals()</code></li>
+<li><code>simulate()</code> <br/><br/></li>
+</ul></li>
+<li>For developers
+
+<ul>
+<li><code>model.matrix()</code>, <code>model.frame()</code></li>
+<li><code>terms()</code>, <code>formula()</code>, <code>family()</code></li>
+</ul></li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>A Few Extras</h2></hgroup><article  id="a-few-extras">
 
 <ul>
@@ -632,7 +649,7 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <li>Separation issues
 
 <ul>
-<li>in logistic, Poisson and negative binomial case we may (complete) separation issues</li>
+<li>in logistic, Poisson and negative binomial case we may encounter (complete) separation issues</li>
 <li>invoking the <code>penalized</code> argument of <code>mixed_model()</code> a Student&#39;s t penalty is placed on the fixed effects</li>
 </ul></li>
 </ul>

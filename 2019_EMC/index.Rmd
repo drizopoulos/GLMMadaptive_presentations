@@ -197,7 +197,7 @@ cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_11 = fixef(fm_AGQ15)
 
 - The Salamanders dataset `data("Salamanders", package = "glmmTMB")`
     + mixed effects truncated Poisson
-    + <font color = "red">(sploiler alert: Code) </font>
+    + <font color = "red">(spoiler alert: Code) </font>
 
 ```{r Salamanders_analysis}
 gm_Laplace <- glmmTMB(count ~ spp + mined + (1 | site), ziformula = ~ spp + mined, 
@@ -312,11 +312,11 @@ vignette("Custom_Models", package = "GLMMadaptive")
 
 ## What the user needs - 1
 
-- Estimated coefficients, standard errors & p-values
+- Estimated coefficients, standard errors & p-values: `summary()`
 
 <br/>
 
-- Hypothesis testing
+- Hypothesis testing `anova()`
     + Wald tests
     + likelihood ratio tests
     + AIC/BIC
@@ -337,12 +337,11 @@ vignette("Methods_MixMod", package = "GLMMadaptive")
 
 - Goodness of Fit
     + support for **DHARMa**
+    + <font color = "red">caveat:</font> MAR missing data
 
 ```r
 vignette("Goodness_of_Fit", package = "GLMMadaptive")
 ```
-
-- Caveat: missing data
 
 ## What the user needs - 4
 
@@ -355,7 +354,6 @@ vignette("Goodness_of_Fit", package = "GLMMadaptive")
 ```r
 vignette("Multiple_Comparisons", package = "GLMMadaptive")
 ```
-
 ## What the user needs - 5
 
 - Predictions via `predict()` method
@@ -371,6 +369,19 @@ vignette("Methods_MixMod", package = "GLMMadaptive")
 vignette("Dynamic_Predictions", package = "GLMMadaptive")
 ```
 
+## What the user needs - 6
+
+- Methods for standard generics
+    + `confint()`, `vcov()` including the sandwich estimator
+    + `coef()`, `fixef()`, `ranef()`
+    + `logLik()`, `nobs()`
+    + `fitted()`, `residuals()`
+    + `simulate()`
+<br/><br/>
+- For developers
+    + `model.matrix()`, `model.frame()`
+    + `terms()`, `formula()`, `family()`
+
 ## A Few Extras
 
 - Marginalized coefficients
@@ -380,7 +391,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 <br/>
 
 - Separation issues
-    + in logistic, Poisson and negative binomial case we may (complete) separation issues
+    + in logistic, Poisson and negative binomial case we may encounter (complete) separation issues
     + invoking the `penalized` argument of `mixed_model()` a Student's t penalty is placed on the fixed effects 
 
 

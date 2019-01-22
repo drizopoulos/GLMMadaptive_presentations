@@ -417,5 +417,22 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 - Extra models
     + Conway-Maxwell-Poisson mixed model
     + ...
+    
+***
 
+<br/> 
+<br/> 
+<br/> 
+<br/>
+<br/>
+<br/> 
+
+<div align = "center">
+<font color = "black" size = "6">**Thank you for your attention!**</font>
+</div>
+<br/>
+
+<div align = "center">
+[http://www.drizopoulos.com/](http://www.drizopoulos.com/)
+</div>
 

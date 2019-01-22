@@ -318,34 +318,98 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 </article></slide><slide class=""><hgroup><h2>Mixed Model Packages in R - 1</h2></hgroup><article  id="mixed-model-packages-in-r---1">
 
 <ul>
-<li><strong>lme4</strong>
+<li><code>lme4::lmer()</code>
 
 <ul>
 <li>Laplace approximation as default</li>
-<li>adaptive Gaussian quadrature only for scalar random effects</li>
+<li><font color = "red">adaptive Gaussian quadrature only for scalar random effects</font> <br/><br/></li>
+</ul></li>
+<li><code>glmmTMB::glmmTMB()</code> more flexible than <strong>lme4</strong>
+
+<ul>
+<li>Laplace approximation <br/><br/></li>
+</ul></li>
+<li><code>glmmsr::glmm()</code>
+
+<ul>
+<li>Monte Carlo importance sampling <br/><br/></li>
+</ul></li>
+<li><code>MASS::glmmPQL()</code>
+
+<ul>
+<li>PQL based on <code>nlme::lme()</code></li>
 </ul></li>
 </ul>
 
-<p><br/></p>
+</article></slide><slide class=""><hgroup><h2>Does It Matter? - 1</h2></hgroup><article  id="does-it-matter---1">
 
 <ul>
-<li><strong>glmmTMB</strong>
+<li>The Toenail dataset <code>data(&quot;toenail&quot;, package = &quot;HSAUR2&quot;)</code>
 
 <ul>
-<li>more flexible than <strong>lme4</strong></li>
-<li>Laplace approximation</li>
+<li>mixed effects logistic regression</li>
+<li>PQL vs Laplace vs adaptive Gaussian quadrature</li>
 </ul></li>
 </ul>
 
-<p><br/></p>
+<pre class = 'prettyprint lang-r'>fm_PQL &lt;- glmmPQL(outcome ~ time * treatment, random = ~ 1 | patientID, 
+                  data = toenail, family = binomial())
+
+fm_Laplace &lt;- glmer(outcome ~ time * treatment + (1 | patientID), 
+                  data = toenail, family = binomial())
+
+fm_AGQ15 &lt;-  glmer(outcome ~ time * treatment + (1 | patientID), 
+                  data = toenail, family = binomial(), nAGQ = 15)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Does It Matter? - 2</h2></hgroup><article  id="does-it-matter---2">
 
 <ul>
-<li><strong>glmmsr</strong>
+<li>The Toenail dataset - results</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_11 = fixef(fm_AGQ15))</pre>
+
+<pre >##                                   PQL    Laplace     AGQ_11
+## (Intercept)               -0.74324709 -2.5098642 -1.6473652
+## time                      -0.29469102 -0.3997340 -0.3924231
+## treatmentterbinafine      -0.03480231 -0.3048303 -0.1663130
+## time:treatmentterbinafine -0.10017515 -0.1371352 -0.1371755</pre>
+
+</article></slide><slide class=""><hgroup><h2>Does It Matter? - 3</h2></hgroup><article  id="does-it-matter---3">
 
 <ul>
-<li>Monte Carlo importance sampling</li>
+<li>The Salamanders dataset <code>data(&quot;Salamanders&quot;, package = &quot;glmmTMB&quot;)</code>
+
+<ul>
+<li>mixed effects truncated Poisson</li>
+<li><font color = "red">(sploiler alert: Code) </font></li>
 </ul></li>
 </ul>
+
+<pre class = 'prettyprint lang-r'>gm_Laplace &lt;- glmmTMB(count ~ spp + mined + (1 | site), ziformula = ~ spp + mined, 
+                      family = truncated_poisson(), data = Salamanders)
+
+gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site, 
+                        zi_fixed = ~ spp + mined, 
+                        family = hurdle.poisson(), data = Salamanders, nAGQ = 25)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Does It Matter? - 4</h2></hgroup><article  id="does-it-matter---4">
+
+<ul>
+<li>The Salamanders dataset - results</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))</pre>
+
+<pre >##                 Laplace     AGQ_25
+## (Intercept) -0.06702286 -3.1900355
+## sppPR       -0.52092708  0.1976119
+## sppDM        0.22457540  0.9137361
+## sppEC-A     -0.19548416  0.6538284
+## sppEC-L      0.64672238  1.4999425
+## sppDES-L     0.60513701  0.9589269
+## sppDF        0.04602476  0.3426018
+## minedno      1.01446593  0.7137289</pre>
 
 </article></slide><slide class=""><hgroup><h2>Mixed Model Packages in R - 2</h2></hgroup><article  id="mixed-model-packages-in-r---2">
 
@@ -380,7 +444,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 </article></slide><slide class=""><hgroup><h2>Model Fitting</h2></hgroup><article  id="model-fitting">
 
 <ul>
-<li>The basic model fitting function is <code>mixed_model(...)</code></li>
+<li>The basic model fitting function is <code>GLMMadaptive::mixed_model()</code></li>
 </ul>
 
 <p><br/></p>
@@ -557,7 +621,7 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <li>Marginalized coefficients
 
 <ul>
-<li>with nonlinear link function fixed effects have an interprtation conditional on the random effects</li>
+<li>with nonlinear link function fixed effects have an interpretation conditional on the random effects</li>
 <li>function <code>marginal_coefs()</code> implements Hedeker et al. solution with standard errors</li>
 </ul></li>
 </ul>

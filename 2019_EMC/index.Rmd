@@ -16,6 +16,14 @@ runtime: shiny
   MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 </script>
 
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+library("MASS")
+library("lme4")
+library("glmmTMB")
+library("GLMMadaptive")
+data("toenail", package = "HSAUR2")
+```
+
 # Motivation
 
 ## Mixed Models
@@ -27,7 +35,6 @@ runtime: shiny
     + Clustered data
     + Multilevel data
     + ...
-
 
 ## The Basic Idea
 
@@ -143,26 +150,72 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
 
 - Monte Carlo: requires fine tuning
     + no clear winner algorithm
-
+    
 # What is available in R
 
 ## Mixed Model Packages in R - 1
 
-- **lme4**
+- `lme4::lmer()`
     + Laplace approximation as default
-    + adaptive Gaussian quadrature only for scalar random effects
-    
-<br/>
-
-- **glmmTMB**
-    + more flexible than **lme4**
+    + <font color = "red">adaptive Gaussian quadrature only for scalar random effects</font>
+<br/><br/>
+- `glmmTMB::glmmTMB()` more flexible than **lme4**
     + Laplace approximation
-
-<br/>
-    
-- **glmmsr**
+<br/><br/>
+- `glmmsr::glmm()`
     + Monte Carlo importance sampling
-    
+<br/><br/>
+- `MASS::glmmPQL()`
+    + PQL based on `nlme::lme()`
+
+## Does It Matter? - 1
+
+- The Toenail dataset `data("toenail", package = "HSAUR2")`
+    + mixed effects logistic regression
+    + PQL vs Laplace vs adaptive Gaussian quadrature
+
+```{r toenail_analysis, message = FALSE}
+fm_PQL <- glmmPQL(outcome ~ time * treatment, random = ~ 1 | patientID, 
+                  data = toenail, family = binomial())
+
+fm_Laplace <- glmer(outcome ~ time * treatment + (1 | patientID), 
+                  data = toenail, family = binomial())
+
+fm_AGQ15 <-  glmer(outcome ~ time * treatment + (1 | patientID), 
+                  data = toenail, family = binomial(), nAGQ = 15)
+```
+
+## Does It Matter? - 2
+
+- The Toenail dataset - results
+
+```{r toenail_results}
+cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_11 = fixef(fm_AGQ15))
+```
+
+## Does It Matter? - 3
+
+- The Salamanders dataset `data("Salamanders", package = "glmmTMB")`
+    + mixed effects truncated Poisson
+    + <font color = "red">(sploiler alert: Code) </font>
+
+```{r Salamanders_analysis}
+gm_Laplace <- glmmTMB(count ~ spp + mined + (1 | site), ziformula = ~ spp + mined, 
+                      family = truncated_poisson(), data = Salamanders)
+
+gm_AGQ25 <- mixed_model(count ~ spp + mined, random = ~ 1 | site, 
+                        zi_fixed = ~ spp + mined, 
+                        family = hurdle.poisson(), data = Salamanders, nAGQ = 25)
+```
+
+## Does It Matter? - 4
+
+- The Salamanders dataset - results
+
+```{r Salamanders_results}
+cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
+```
+
 ## Mixed Model Packages in R - 2
 
 <br/>
@@ -188,12 +241,11 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
     + Give advanced users the option to extend it
     + Well documented
     
-
 # What GLMMadaptive offers
 
 ## Model Fitting
 
-- The basic model fitting function is `mixed_model(...)`
+- The basic model fitting function is `GLMMadaptive::mixed_model()`
 
 <br/>
 

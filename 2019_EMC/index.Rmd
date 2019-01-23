@@ -26,7 +26,7 @@ data("toenail", package = "HSAUR2")
 
 # Motivation
 
-## Mixed Models
+## Mixed models
 
 <br/>
 
@@ -36,7 +36,7 @@ data("toenail", package = "HSAUR2")
     + Multilevel data
     + ...
 
-## The Basic Idea
+## The basic idea
 
 <br/>
 
@@ -48,7 +48,7 @@ data("toenail", package = "HSAUR2")
 - Correlations are modeled via random effects $b$
     + measurements in the same group share the same random effect
 
-## Mathematical Definition - 1
+## Mathematical definition - 1
 
 - A general definition of mixed models:
 $$
@@ -64,7 +64,7 @@ $$
     + the random effects most often are assumed normally distributed
     + $\theta = (\theta_y^\top, \mbox{vech}(D)^\top)^\top$ are the model parameters
 
-## Mathematical Definition - 2
+## Mathematical definition - 2
 
 - To estimate mixed models under maximum likelihood we need
 the marginal log-likelihood function
@@ -75,7 +75,7 @@ $$
 <font color = "red">To estimate mixed models we need to solve the integral</font>
 </div>
 
-## Normal vs the Rest - 1
+## Normal vs the rest - 1
 
 - The random effects $b$ are assumed to have a (multivariate) normal distribution
 
@@ -92,7 +92,7 @@ ${\color{blue} \Rightarrow}$ <font color = "blue">Easy to program</font>
 ${\color{blue} \Rightarrow}$ <font color = "blue">Stable algorithms available in most software</font>
 </div>
 
-## Normal vs the Rest - 2
+## Normal vs the rest - 2
 
 <br/>
 
@@ -107,7 +107,7 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
 
 # Estimation
 
-## How to Solve the Integrals
+## How to solve the integrals
 
 - Two general solutions
 
@@ -120,7 +120,7 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
     + finite sum over a grid
 
 
-## Popular Available options
+## Popular available options
 
 - Approximation of the integrand
     + Penalized Quasi Likelihood
@@ -153,7 +153,7 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
     
 # What is available in R
 
-## Mixed Model Packages in R - 1
+## Mixed model packages in R - 1
 
 - `lme4::lmer()`
     + Laplace approximation as default
@@ -168,7 +168,7 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
 - `MASS::glmmPQL()`
     + PQL based on `nlme::lme()`
 
-## Does It Matter? - 1
+## Does it matter? - 1
 
 - The Toenail dataset `data("toenail", package = "HSAUR2")`
     + mixed effects logistic regression
@@ -185,7 +185,7 @@ fm_AGQ15 <-  glmer(outcome ~ time * treatment + (1 | patientID),
                   data = toenail, family = binomial(), nAGQ = 15)
 ```
 
-## Does It Matter? - 2
+## Does it matter? - 2
 
 - The Toenail dataset - results
 
@@ -193,7 +193,7 @@ fm_AGQ15 <-  glmer(outcome ~ time * treatment + (1 | patientID),
 cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_11 = fixef(fm_AGQ15))
 ```
 
-## Does It Matter? - 3
+## Does it matter? - 3
 
 - The Salamanders dataset `data("Salamanders", package = "glmmTMB")`
     + mixed effects truncated Poisson
@@ -208,7 +208,7 @@ gm_AGQ25 <- mixed_model(count ~ spp + mined, random = ~ 1 | site,
                         family = hurdle.poisson(), data = Salamanders, nAGQ = 25)
 ```
 
-## Does It Matter? - 4
+## Does it matter? - 4
 
 - The Salamanders dataset - results
 
@@ -216,7 +216,7 @@ gm_AGQ25 <- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
 ```
 
-## Mixed Model Packages in R - 2
+## Mixed model packages in R - 2
 
 <br/>
 <br/>
@@ -227,7 +227,7 @@ cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
 <br/><br/>
 </div>
 
-## A New Package
+## A new package
 
 <br/>
 
@@ -243,7 +243,7 @@ cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
     
 # What GLMMadaptive offers
 
-## Model Fitting
+## Model fitting
 
 - The basic model fitting function is `GLMMadaptive::mixed_model()`
 
@@ -255,7 +255,7 @@ cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
     + `data` a data frame containing the variables to use
     + `family` a family object specifying the model
 
-## Available Models: Standard GLMMs
+## Available models: Standard GLMMs
 
 - It fits the most frequently-used GLMMs
     + mixed effects logistic regression `family = binomial()`
@@ -271,7 +271,7 @@ mixed_model(y ~ time * group, random = ~ time | id, data = DF,
 vignette("GLMMadaptive_basics", package = "GLMMadaptive")
 ```
 
-## Available Models: Specialized GLMMs - 1
+## Available models: Specialized GLMMs - 1
 
 <br/>
 
@@ -280,14 +280,12 @@ vignette("GLMMadaptive_basics", package = "GLMMadaptive")
     + Student's-t mixed model `family = students.t()`
     + Beta mixed model `family = beta.fam()`
 
-## Available Models: Specialized GLMMs - 2
+## Available models: Specialized GLMMs - 2
 
 - Zero-inflated mixed models
     + zero-inflated Poisson `family = zi.poisson()`
     + zero-inflated negative binomial `family = zi.negative.binomial()`
-
-<br/>
-
+<br/><br/>
 - Hurdle mixed models
     + hurdle Poisson `family = hurdle.poisson()`
     + hurdle negative binomial `family = hurdle.negative.binomial()`
@@ -298,7 +296,7 @@ vignette("GLMMadaptive_basics", package = "GLMMadaptive")
 vignette("ZeroInflated_and_TwoPart_Models", package = "GLMMadaptive")
 ```
     
-## User-defined Models
+## User-defined models
 
 <br/>
 
@@ -312,16 +310,18 @@ vignette("Custom_Models", package = "GLMMadaptive")
 
 ## What the user needs - 1
 
-- Estimated coefficients, standard errors & p-values: `summary()`
+- `summary()`: Estimated coefficients, standard errors & p-values
 
 <br/>
 
-- Hypothesis testing `anova()`
+- `anova()`: Hypothesis testing
     + Wald tests
     + likelihood ratio tests
     + AIC/BIC
 
 ## What the user needs - 2
+
+<br/>
 
 - Effects Plots
     + build-in `effectPlotData()`
@@ -366,6 +366,7 @@ vignette("Multiple_Comparisons", package = "GLMMadaptive")
 
 ```r
 vignette("Methods_MixMod", package = "GLMMadaptive")
+
 vignette("Dynamic_Predictions", package = "GLMMadaptive")
 ```
 
@@ -382,11 +383,11 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
     + `model.matrix()`, `model.frame()`
     + `terms()`, `formula()`, `family()`
 
-## A Few Extras
+## A Few extras
 
 - Marginalized coefficients
     + with nonlinear link function fixed effects have an interpretation conditional on the random effects
-    + function `marginal_coefs()` implements Hedeker et al. solution with standard errors
+    + function `marginal_coefs()` implements Hedeker's et al. solution with standard errors
 
 <br/>
 
@@ -422,17 +423,24 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 
 <br/> 
 <br/> 
-<br/> 
-<br/>
-<br/>
-<br/> 
 
 <div align = "center">
 <font color = "black" size = "6">**Thank you for your attention!**</font>
 </div>
 <br/>
-
 <div align = "center">
 [http://www.drizopoulos.com/](http://www.drizopoulos.com/)
+</div>
+
+<br/> 
+<br/>
+<br/>
+
+<div align = "center">
+<font color = "black" size = "5">**These slides are available at:**</font>
+</div>
+<div align = "center">
+<div align = "center">
+[https://drizopoulos.github.io/GLMMadaptive_presentations/index.html](https://drizopoulos.github.io/GLMMadaptive_presentations/index.html)
 </div>
 

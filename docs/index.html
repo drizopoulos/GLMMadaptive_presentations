@@ -130,7 +130,7 @@
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Motivation</h2></hgroup><article  id="motivation">
 
-</article></slide><slide class=""><hgroup><h2>Mixed Models</h2></hgroup><article  id="mixed-models">
+</article></slide><slide class=""><hgroup><h2>Mixed models</h2></hgroup><article  id="mixed-models">
 
 <p><br/></p>
 
@@ -145,7 +145,7 @@
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>The Basic Idea</h2></hgroup><article  id="the-basic-idea">
+</article></slide><slide class=""><hgroup><h2>The basic idea</h2></hgroup><article  id="the-basic-idea">
 
 <p><br/></p>
 
@@ -167,7 +167,7 @@
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Mathematical Definition - 1</h2></hgroup><article  id="mathematical-definition---1">
+</article></slide><slide class=""><hgroup><h2>Mathematical definition - 1</h2></hgroup><article  id="mathematical-definition---1">
 
 <ul>
 <li>A general definition of mixed models: \[
@@ -186,7 +186,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Mathematical Definition - 2</h2></hgroup><article  id="mathematical-definition---2">
+</article></slide><slide class=""><hgroup><h2>Mathematical definition - 2</h2></hgroup><article  id="mathematical-definition---2">
 
 <ul>
 <li>To estimate mixed models under maximum likelihood we need the marginal log-likelihood function \[
@@ -197,7 +197,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 <p><font color = "red">To estimate mixed models we need to solve the integral</font></p></div></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Normal vs the Rest - 1</h2></hgroup><article  id="normal-vs-the-rest---1">
+</article></slide><slide class=""><hgroup><h2>Normal vs the rest - 1</h2></hgroup><article  id="normal-vs-the-rest---1">
 
 <ul>
 <li>The random effects \(b\) are assumed to have a (multivariate) normal distribution</li>
@@ -219,7 +219,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 <div style="padding:50px">
 <p>\({\color{blue} \Rightarrow}\) <font color = "blue">Easy to program</font> \({\color{blue} \Rightarrow}\) <font color = "blue">Stable algorithms available in most software</font></p></div>
 
-</article></slide><slide class=""><hgroup><h2>Normal vs the Rest - 2</h2></hgroup><article  id="normal-vs-the-rest---2">
+</article></slide><slide class=""><hgroup><h2>Normal vs the rest - 2</h2></hgroup><article  id="normal-vs-the-rest---2">
 
 <p><br/></p>
 
@@ -234,7 +234,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Estimation</h2></hgroup><article  id="estimation">
 
-</article></slide><slide class=""><hgroup><h2>How to Solve the Integrals</h2></hgroup><article  id="how-to-solve-the-integrals">
+</article></slide><slide class=""><hgroup><h2>How to solve the integrals</h2></hgroup><article  id="how-to-solve-the-integrals">
 
 <ul>
 <li>Two general solutions</li>
@@ -255,7 +255,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 </ul></li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>Popular Available options</h2></hgroup><article  id="popular-available-options">
+</article></slide><slide class=""><hgroup><h2>Popular available options</h2></hgroup><article  id="popular-available-options">
 
 <ul>
 <li>Approximation of the integrand
@@ -315,7 +315,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>What is available in R</h2></hgroup><article  id="what-is-available-in-r">
 
-</article></slide><slide class=""><hgroup><h2>Mixed Model Packages in R - 1</h2></hgroup><article  id="mixed-model-packages-in-r---1">
+</article></slide><slide class=""><hgroup><h2>Mixed model packages in R - 1</h2></hgroup><article  id="mixed-model-packages-in-r---1">
 
 <ul>
 <li><code>lme4::lmer()</code>
@@ -341,7 +341,7 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Does It Matter? - 1</h2></hgroup><article  id="does-it-matter---1">
+</article></slide><slide class=""><hgroup><h2>Does it matter? - 1</h2></hgroup><article  id="does-it-matter---1">
 
 <ul>
 <li>The Toenail dataset <code>data(&quot;toenail&quot;, package = &quot;HSAUR2&quot;)</code>
@@ -361,7 +361,7 @@ fm_Laplace &lt;- glmer(outcome ~ time * treatment + (1 | patientID),
 fm_AGQ15 &lt;-  glmer(outcome ~ time * treatment + (1 | patientID), 
                   data = toenail, family = binomial(), nAGQ = 15)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Does It Matter? - 2</h2></hgroup><article  id="does-it-matter---2">
+</article></slide><slide class=""><hgroup><h2>Does it matter? - 2</h2></hgroup><article  id="does-it-matter---2">
 
 <ul>
 <li>The Toenail dataset - results</li>
@@ -375,7 +375,7 @@ fm_AGQ15 &lt;-  glmer(outcome ~ time * treatment + (1 | patientID),
 ## treatmentterbinafine      -0.03480231 -0.3048303 -0.1663130
 ## time:treatmentterbinafine -0.10017515 -0.1371352 -0.1371755</pre>
 
-</article></slide><slide class=""><hgroup><h2>Does It Matter? - 3</h2></hgroup><article  id="does-it-matter---3">
+</article></slide><slide class=""><hgroup><h2>Does it matter? - 3</h2></hgroup><article  id="does-it-matter---3">
 
 <ul>
 <li>The Salamanders dataset <code>data(&quot;Salamanders&quot;, package = &quot;glmmTMB&quot;)</code>
@@ -393,7 +393,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
                         zi_fixed = ~ spp + mined, 
                         family = hurdle.poisson(), data = Salamanders, nAGQ = 25)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Does It Matter? - 4</h2></hgroup><article  id="does-it-matter---4">
+</article></slide><slide class=""><hgroup><h2>Does it matter? - 4</h2></hgroup><article  id="does-it-matter---4">
 
 <ul>
 <li>The Salamanders dataset - results</li>
@@ -411,14 +411,14 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 ## sppDF        0.04602476  0.3426018
 ## minedno      1.01446593  0.7137289</pre>
 
-</article></slide><slide class=""><hgroup><h2>Mixed Model Packages in R - 2</h2></hgroup><article  id="mixed-model-packages-in-r---2">
+</article></slide><slide class=""><hgroup><h2>Mixed model packages in R - 2</h2></hgroup><article  id="mixed-model-packages-in-r---2">
 
 <p><br/> <br/></p>
 
 <div style="float: center; text-align: center; width: 750px; border: 3px solid black">
 <p><br/><br/> <strong><font size="6" color = "red">Need for adaptive GH for \({\color{red} &gt; 1}\) random effects</font></strong> <br/><br/></p></div>
 
-</article></slide><slide class=""><hgroup><h2>A New Package</h2></hgroup><article  id="a-new-package">
+</article></slide><slide class=""><hgroup><h2>A new package</h2></hgroup><article  id="a-new-package">
 
 <p><br/></p>
 
@@ -441,7 +441,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>What GLMMadaptive offers</h2></hgroup><article  id="what-glmmadaptive-offers">
 
-</article></slide><slide class=""><hgroup><h2>Model Fitting</h2></hgroup><article  id="model-fitting">
+</article></slide><slide class=""><hgroup><h2>Model fitting</h2></hgroup><article  id="model-fitting">
 
 <ul>
 <li>The basic model fitting function is <code>GLMMadaptive::mixed_model()</code></li>
@@ -460,7 +460,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Available Models: Standard GLMMs</h2></hgroup><article  id="available-models-standard-glmms">
+</article></slide><slide class=""><hgroup><h2>Available models: Standard GLMMs</h2></hgroup><article  id="available-models-standard-glmms">
 
 <ul>
 <li>It fits the most frequently-used GLMMs
@@ -477,7 +477,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;GLMMadaptive_basics&quot;, package = &quot;GLMMadaptive&quot;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Available Models: Specialized GLMMs - 1</h2></hgroup><article  id="available-models-specialized-glmms---1">
+</article></slide><slide class=""><hgroup><h2>Available models: Specialized GLMMs - 1</h2></hgroup><article  id="available-models-specialized-glmms---1">
 
 <p><br/></p>
 
@@ -491,20 +491,15 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Available Models: Specialized GLMMs - 2</h2></hgroup><article  id="available-models-specialized-glmms---2">
+</article></slide><slide class=""><hgroup><h2>Available models: Specialized GLMMs - 2</h2></hgroup><article  id="available-models-specialized-glmms---2">
 
 <ul>
 <li>Zero-inflated mixed models
 
 <ul>
 <li>zero-inflated Poisson <code>family = zi.poisson()</code></li>
-<li>zero-inflated negative binomial <code>family = zi.negative.binomial()</code></li>
+<li>zero-inflated negative binomial <code>family = zi.negative.binomial()</code> <br/><br/></li>
 </ul></li>
-</ul>
-
-<p><br/></p>
-
-<ul>
 <li>Hurdle mixed models
 
 <ul>
@@ -517,7 +512,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;ZeroInflated_and_TwoPart_Models&quot;, package = &quot;GLMMadaptive&quot;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>User-defined Models</h2></hgroup><article  id="user-defined-models">
+</article></slide><slide class=""><hgroup><h2>User-defined models</h2></hgroup><article  id="user-defined-models">
 
 <p><br/></p>
 
@@ -535,13 +530,13 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 </article></slide><slide class=""><hgroup><h2>What the user needs - 1</h2></hgroup><article  id="what-the-user-needs---1">
 
 <ul>
-<li>Estimated coefficients, standard errors &amp; p-values: <code>summary()</code></li>
+<li><code>summary()</code>: Estimated coefficients, standard errors &amp; p-values</li>
 </ul>
 
 <p><br/></p>
 
 <ul>
-<li>Hypothesis testing <code>anova()</code>
+<li><code>anova()</code>: Hypothesis testing
 
 <ul>
 <li>Wald tests</li>
@@ -551,6 +546,8 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>What the user needs - 2</h2></hgroup><article  id="what-the-user-needs---2">
+
+<p><br/></p>
 
 <ul>
 <li>Effects Plots
@@ -610,6 +607,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 </ul>
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;Methods_MixMod&quot;, package = &quot;GLMMadaptive&quot;)
+
 vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</pre>
 
 </article></slide><slide class=""><hgroup><h2>What the user needs - 6</h2></hgroup><article  id="what-the-user-needs---6">
@@ -632,14 +630,14 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>A Few Extras</h2></hgroup><article  id="a-few-extras">
+</article></slide><slide class=""><hgroup><h2>A Few extras</h2></hgroup><article  id="a-few-extras">
 
 <ul>
 <li>Marginalized coefficients
 
 <ul>
 <li>with nonlinear link function fixed effects have an interpretation conditional on the random effects</li>
-<li>function <code>marginal_coefs()</code> implements Hedeker et al. solution with standard errors</li>
+<li>function <code>marginal_coefs()</code> implements Hedeker&#39;s et al. solution with standard errors</li>
 </ul></li>
 </ul>
 
@@ -693,15 +691,25 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p><br/> <br/> <br/> <br/> <br/> <br/></p>
+<p><br/> <br/></p>
 
 <div align="center">
 <p><font color = "black" size = "6"><strong>Thank you for your attention!</strong></font></p></div>
 
-<p><br/></p>
+<br/>
 
 <div align="center">
-<p><a href='http://www.drizopoulos.com/' title=''>http://www.drizopoulos.com/</a></p></div></article></slide>
+<p><a href='http://www.drizopoulos.com/' title=''>http://www.drizopoulos.com/</a></p></div>
+
+<p><br/> <br/> <br/></p>
+
+<div align="center">
+<p><font color = "black" size = "5"><strong>These slides are available at:</strong></font></p></div>
+
+<div align = "center">
+
+<div align="center">
+<p><a href='https://drizopoulos.github.io/GLMMadaptive_presentations/index.html' title=''>https://drizopoulos.github.io/GLMMadaptive_presentations/index.html</a></p></div></article></slide>
 
 
   <slide class="backdrop"></slide>

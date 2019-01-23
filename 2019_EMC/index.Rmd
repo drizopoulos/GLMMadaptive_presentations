@@ -135,13 +135,19 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
 ## Which to choose
 
 - Penalized Quasi Likelihood: generally not good
-<br/><br/>
+
+<br/>
+
 - Laplace: needs many repeated measurements per subjects
     + it does not work well with binary data and Poisson with low counts
-<br/><br/>
-- adaptive Gaussian quadrature: Gold standard
-    + computational intensive
-<br/><br/>
+
+<br/>
+
+- Adaptive Gaussian quadrature: Gold standard
+    + computationally intensive
+
+<br/>
+
 - Monte Carlo: requires fine tuning
     + no clear winner algorithm
     

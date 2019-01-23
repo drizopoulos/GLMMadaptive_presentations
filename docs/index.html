@@ -150,7 +150,7 @@
 <p><br/></p>
 
 <ul>
-<li>We have a grouped outcome \(Y\)
+<li>We have a grouped outcome \({\color{blue} Y}\)
 
 <ul>
 <li>measurements in the same group(s) are correlated</li>
@@ -160,7 +160,7 @@
 <p><br/></p>
 
 <ul>
-<li>Correlations are modeled via random effects \(b\)
+<li>Correlations are modeled via random effects \({\color{red} b}\)
 
 <ul>
 <li>measurements in the same group share the same random effect</li>
@@ -173,8 +173,8 @@
 <li>A general definition of mixed models: \[
 \left \{
 \begin{array}{ccl}
-Y \mid b &amp; \sim &amp; \mathcal F(\theta_y)\\&amp;&amp;\\
-b &amp; \sim &amp; \mathcal N(0, D)\\
+{\color{blue} Y} \mid {\color{red} b} &amp; \sim &amp; \mathcal F(\theta_y)\\&amp;&amp;\\
+{\color{red} b} &amp; \sim &amp; \mathcal N(0, D)\\
 \end{array}
 \right.
 \] <br/>
@@ -280,32 +280,17 @@ b &amp; \sim &amp; \mathcal N(0, D)\\
 </article></slide><slide class=""><hgroup><h2>Which to choose</h2></hgroup><article  id="which-to-choose">
 
 <ul>
-<li>Penalized Quasi Likelihood: generally not good</li>
-</ul>
-
-<p><br/></p>
-
-<ul>
+<li>Penalized Quasi Likelihood: generally not good <br/><br/></li>
 <li>Laplace: needs many repeated measurements per subjects
 
 <ul>
-<li>it does not work well with binary data and Poisson with low counts</li>
+<li>it does not work well with binary data and Poisson with low counts <br/><br/></li>
 </ul></li>
-</ul>
-
-<p><br/></p>
-
-<ul>
 <li>adaptive Gaussian quadrature: Gold standard
 
 <ul>
-<li>computational intensive</li>
+<li>computational intensive <br/><br/></li>
 </ul></li>
-</ul>
-
-<p><br/></p>
-
-<ul>
 <li>Monte Carlo: requires fine tuning
 
 <ul>

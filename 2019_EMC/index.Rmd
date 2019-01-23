@@ -40,12 +40,12 @@ data("toenail", package = "HSAUR2")
 
 <br/>
 
-- We have a grouped outcome $Y$
+- We have a grouped outcome ${\color{blue} Y}$
     + measurements in the same group(s) are correlated
 
 <br/>
 
-- Correlations are modeled via random effects $b$
+- Correlations are modeled via random effects ${\color{red} b}$
     + measurements in the same group share the same random effect
 
 ## Mathematical definition - 1
@@ -54,8 +54,8 @@ data("toenail", package = "HSAUR2")
 $$
 \left \{
 \begin{array}{ccl}
-Y \mid b & \sim & \mathcal F(\theta_y)\\&&\\
-b & \sim & \mathcal N(0, D)\\
+{\color{blue} Y} \mid {\color{red} b} & \sim & \mathcal F(\theta_y)\\&&\\
+{\color{red} b} & \sim & \mathcal N(0, D)\\
 \end{array}
 \right.
 $$
@@ -135,19 +135,13 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
 ## Which to choose
 
 - Penalized Quasi Likelihood: generally not good
-
-<br/>
-
+<br/><br/>
 - Laplace: needs many repeated measurements per subjects
     + it does not work well with binary data and Poisson with low counts
-
-<br/>
-
+<br/><br/>
 - adaptive Gaussian quadrature: Gold standard
     + computational intensive
-
-<br/>
-
+<br/><br/>
 - Monte Carlo: requires fine tuning
     + no clear winner algorithm
     

@@ -441,6 +441,6 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 </div>
 <div align = "center">
 <div align = "center">
-[https://drizopoulos.github.io/GLMMadaptive_presentations/index.html](https://drizopoulos.github.io/GLMMadaptive_presentations/index.html)
+[https://drizopoulos.github.io/GLMMadaptive_presentations/](https://drizopoulos.github.io/GLMMadaptive_presentations/)
 </div>
 

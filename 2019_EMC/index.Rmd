@@ -408,7 +408,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
     
 # What the future holds...
 
-## Future Plans
+## Future plans
 
 - Implement nested random effects
     + using **Matrix** sparse matrices classes

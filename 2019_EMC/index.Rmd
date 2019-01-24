@@ -78,14 +78,14 @@ $$
 ## Normal vs the rest - 1
 
 - The random effects $b$ are assumed to have a (multivariate) normal distribution
-
-<br/>
-
+<br/><br/>
 - When 
     + the outcome $Y$ also has a normal distribution,
     + the random effects enter linearly in the linear predictor
-    
-<font, color = "black">the integral can be solved *analytically*</font>
+
+<div style = "padding:33px">
+<font color = "black">the integral can be solved</font> <font color = "purple">*analytically*</font>
+</div>
 
 <div style = "padding:50px">
 ${\color{blue} \Rightarrow}$ <font color = "blue">Easy to program</font> 
@@ -392,7 +392,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
     + <font color = "red">(very) often not what we want</font>
 <br/><br/>
 
-[1] an explanation can be found at: [https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression](https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression)
+<font size = 5>[1] an explanation can be found at: [https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression](https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression)</font>
 
 ## A Few extras - 2
 
@@ -410,7 +410,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
     + invoking the `penalized` argument of `mixed_model()` a Student's t penalty is placed on the fixed effects 
 <br/><br/>
 
-[2] an example at: [https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns](https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns)
+<font size = 5>[2] an example at: [https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns](https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns)</font>
 
 
 ## Documentation

@@ -630,27 +630,47 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 </ul></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>A Few extras</h2></hgroup><article  id="a-few-extras">
+</article></slide><slide class=""><hgroup><h2>A Few extras - 1</h2></hgroup><article  id="a-few-extras---1">
+
+<p><br/></p>
+
+<ul>
+<li>Intepretation
+
+<ul>
+<li>with nonlinear link functions fixed effects have an interpretation conditional on the random effects [1]</li>
+<li><font color = "red">(very) often not what we want</font> <br/><br/></li>
+</ul></li>
+</ul>
+
+<p>[1] an explanation can be found at: <a href='https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression' title=''>https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression</a></p>
+
+</article></slide><slide class=""><hgroup><h2>A Few extras - 2</h2></hgroup><article  id="a-few-extras---2">
+
+<p><br/></p>
 
 <ul>
 <li>Marginalized coefficients
 
 <ul>
-<li>with nonlinear link function fixed effects have an interpretation conditional on the random effects</li>
+<li>Heagerty et al have proposed marginalized mixed models \({\color{red} \Rightarrow}\) <font color = "red">Difficult to fit</font></li>
+<li><a href='https://dx.doi.org/10.1111/biom.12707' title=''>Hedeker et al.</a> recently proposed an easier alternative solution</li>
 <li>function <code>marginal_coefs()</code> implements Hedeker&#39;s et al. solution with standard errors</li>
 </ul></li>
 </ul>
 
-<p><br/></p>
+</article></slide><slide class=""><hgroup><h2>A Few extras - 3</h2></hgroup><article  id="a-few-extras---3">
 
 <ul>
 <li>Separation issues
 
 <ul>
-<li>in logistic, Poisson and negative binomial case we may encounter (complete) separation issues</li>
-<li>invoking the <code>penalized</code> argument of <code>mixed_model()</code> a Student&#39;s t penalty is placed on the fixed effects</li>
+<li>in logistic, Poisson and negative binomial case we may encounter (complete) separation issues [2]</li>
+<li>invoking the <code>penalized</code> argument of <code>mixed_model()</code> a Student&#39;s t penalty is placed on the fixed effects <br/><br/></li>
 </ul></li>
 </ul>
+
+<p>[2] an example at: <a href='https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns' title=''>https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns</a></p>
 
 </article></slide><slide class=""><hgroup><h2>Documentation</h2></hgroup><article  id="documentation">
 

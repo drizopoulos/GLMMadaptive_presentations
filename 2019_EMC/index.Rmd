@@ -383,17 +383,34 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
     + `model.matrix()`, `model.frame()`
     + `terms()`, `formula()`, `family()`
 
-## A Few extras
-
-- Marginalized coefficients
-    + with nonlinear link function fixed effects have an interpretation conditional on the random effects
-    + function `marginal_coefs()` implements Hedeker's et al. solution with standard errors
+## A Few extras - 1
 
 <br/>
 
+- Intepretation
+    + with nonlinear link functions fixed effects have an interpretation conditional on the random effects [1]
+    + <font color = "red">(very) often not what we want</font>
+<br/><br/>
+
+[1] an explanation can be found at: [https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression](https://stats.stackexchange.com/questions/365907/interpretation-of-fixed-effects-from-mixed-effect-logistic-regression)
+
+## A Few extras - 2
+
+<br/>
+
+- Marginalized coefficients
+    + Heagerty et al have proposed marginalized mixed models ${\color{red} \Rightarrow}$ <font color = "red">Difficult to fit</font>
+    + [Hedeker et al.](https://dx.doi.org/10.1111/biom.12707) recently proposed an easier alternative solution
+    + function `marginal_coefs()` implements Hedeker's et al. solution with standard errors
+
+## A Few extras - 3
+
 - Separation issues
-    + in logistic, Poisson and negative binomial case we may encounter (complete) separation issues
+    + in logistic, Poisson and negative binomial case we may encounter (complete) separation issues [2]
     + invoking the `penalized` argument of `mixed_model()` a Student's t penalty is placed on the fixed effects 
+<br/><br/>
+
+[2] an example at: [https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns](https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns)
 
 
 ## Documentation

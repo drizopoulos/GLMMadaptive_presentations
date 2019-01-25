@@ -85,9 +85,7 @@ $$
 
 <div style = "padding:33px">
 <font color = "black">the integral can be solved</font> <font color = "purple">*analytically*</font>
-</div>
-
-<div style = "padding:50px">
+<br/><br/>
 ${\color{blue} \Rightarrow}$ <font color = "blue">Easy to program</font> 
 ${\color{blue} \Rightarrow}$ <font color = "blue">Stable algorithms available in most software</font>
 </div>
@@ -101,8 +99,10 @@ ${\color{blue} \Rightarrow}$ <font color = "blue">Stable algorithms available in
 <br/>
 
 <div style = "padding:50px">
-${\color{red} \Rightarrow}$ <font color = "red">Much more difficult to program</font> 
-${\color{red} \Rightarrow}$ <font color = "red">Less options available in software</font>
+${\color{red} \Rightarrow}$ <font color = "red">Much more difficult to program</font>
+<br/><br/> 
+${\color{red} \Rightarrow}$ <font color = "black">Several solutions available in software,</font> 
+<font color = "red">**however, many not optimal!!**</font>
 </div>
 
 # Estimation
@@ -138,12 +138,12 @@ ${\color{red} \Rightarrow}$ <font color = "red">Less options available in softwa
 
 <br/>
 
-- Laplace: needs many repeated measurements per subjects
+- Laplace: needs many repeated measurements per subject
     + it does not work well with binary data and Poisson with low counts
 
 <br/>
 
-- Adaptive Gaussian quadrature: Gold standard
+- Adaptive Gaussian quadrature: <font color = "magenta">*Gold standard*</font>
     + computationally intensive
 
 <br/>
@@ -190,7 +190,7 @@ fm_AGQ15 <-  glmer(outcome ~ time * treatment + (1 | patientID),
 - The Toenail dataset - results
 
 ```{r toenail_results}
-cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_11 = fixef(fm_AGQ15))
+cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_15 = fixef(fm_AGQ15))
 ```
 
 ## Does it matter? - 3
@@ -399,7 +399,8 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 <br/>
 
 - Marginalized coefficients
-    + Heagerty et al have proposed marginalized mixed models ${\color{red} \Rightarrow}$ <font color = "red">Difficult to fit</font>
+    + Heagerty et al have proposed marginalized mixed models<br/>
+    ${\color{red} \Rightarrow}$ <font color = "red">Computationally intensive to fit</font>
     + [Hedeker et al.](https://dx.doi.org/10.1111/biom.12707) recently proposed an easier alternative solution
     + function `marginal_coefs()` implements Hedeker's et al. solution with standard errors
 
@@ -407,7 +408,8 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 
 - Separation issues
     + in logistic, Poisson and negative binomial case we may encounter (complete) separation issues [2]
-    + invoking the `penalized` argument of `mixed_model()` a Student's t penalty is placed on the fixed effects 
+    + `penalized` argument of `mixed_model()` places a Student's t penalty on the fixed effects 
+    + the user can control scale (default 1) and df (default 3)
 <br/><br/>
 
 <font size = 5>[2] an example at: [https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns](https://stats.stackexchange.com/questions/386553/linear-mixed-model-for-placement-of-nuclear-stress-in-10-word-turns)</font>
@@ -432,9 +434,14 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 
 <br/>
 
+- More options for the covariance matrix of the random effects
+    + auto-regressive
+    + compound symmetry
+
+<br/>
+
 - Extra models
     + Conway-Maxwell-Poisson mixed model
-    + ...
     
 ***
 

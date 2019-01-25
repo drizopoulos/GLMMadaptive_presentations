@@ -210,10 +210,7 @@
 </ul>
 
 <div style="padding:33px">
-<p><font color = "black">the integral can be solved</font> <font color = "purple"><em>analytically</em></font></p></div>
-
-<div style="padding:50px">
-<p>\({\color{blue} \Rightarrow}\) <font color = "blue">Easy to program</font> \({\color{blue} \Rightarrow}\) <font color = "blue">Stable algorithms available in most software</font></p></div>
+<p><font color = "black">the integral can be solved</font> <font color = "purple"><em>analytically</em></font> <br/><br/> \({\color{blue} \Rightarrow}\) <font color = "blue">Easy to program</font> \({\color{blue} \Rightarrow}\) <font color = "blue">Stable algorithms available in most software</font></p></div>
 
 </article></slide><slide class=""><hgroup><h2>Normal vs the rest - 2</h2></hgroup><article  id="normal-vs-the-rest---2">
 
@@ -226,7 +223,7 @@
 <p><br/></p>
 
 <div style="padding:50px">
-<p>\({\color{red} \Rightarrow}\) <font color = "red">Much more difficult to program</font> \({\color{red} \Rightarrow}\) <font color = "red">Less options available in software</font></p></div>
+<p>\({\color{red} \Rightarrow}\) <font color = "red">Much more difficult to program</font> <br/><br/> \({\color{red} \Rightarrow}\) <font color = "black">Several solutions available in software,</font> <font color = "red"><strong>however, many not optimal!!</strong></font></p></div>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Estimation</h2></hgroup><article  id="estimation">
 
@@ -282,7 +279,7 @@
 <p><br/></p>
 
 <ul>
-<li>Laplace: needs many repeated measurements per subjects
+<li>Laplace: needs many repeated measurements per subject
 
 <ul>
 <li>it does not work well with binary data and Poisson with low counts</li>
@@ -292,7 +289,7 @@
 <p><br/></p>
 
 <ul>
-<li>Adaptive Gaussian quadrature: Gold standard
+<li>Adaptive Gaussian quadrature: <font color = "magenta"><em>Gold standard</em></font>
 
 <ul>
 <li>computationally intensive</li>
@@ -363,9 +360,9 @@ fm_AGQ15 &lt;-  glmer(outcome ~ time * treatment + (1 | patientID),
 <li>The Toenail dataset - results</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_11 = fixef(fm_AGQ15))</pre>
+<pre class = 'prettyprint lang-r'>cbind(PQL = fixef(fm_PQL), Laplace = fixef(fm_Laplace), AGQ_15 = fixef(fm_AGQ15))</pre>
 
-<pre >##                                   PQL    Laplace     AGQ_11
+<pre >##                                   PQL    Laplace     AGQ_15
 ## (Intercept)               -0.74324709 -2.5098642 -1.6473652
 ## time                      -0.29469102 -0.3997340 -0.3924231
 ## treatmentterbinafine      -0.03480231 -0.3048303 -0.1663130
@@ -649,7 +646,7 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <li>Marginalized coefficients
 
 <ul>
-<li>Heagerty et al have proposed marginalized mixed models \({\color{red} \Rightarrow}\) <font color = "red">Difficult to fit</font></li>
+<li>Heagerty et al have proposed marginalized mixed models<br/> \({\color{red} \Rightarrow}\) <font color = "red">Computationally intensive to fit</font></li>
 <li><a href='https://dx.doi.org/10.1111/biom.12707' title=''>Hedeker et al.</a> recently proposed an easier alternative solution</li>
 <li>function <code>marginal_coefs()</code> implements Hedeker&#39;s et al. solution with standard errors</li>
 </ul></li>
@@ -662,7 +659,8 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 
 <ul>
 <li>in logistic, Poisson and negative binomial case we may encounter (complete) separation issues [2]</li>
-<li>invoking the <code>penalized</code> argument of <code>mixed_model()</code> a Student&#39;s t penalty is placed on the fixed effects <br/><br/></li>
+<li><code>penalized</code> argument of <code>mixed_model()</code> places a Student&#39;s t penalty on the fixed effects</li>
+<li>the user can control scale (default 1) and df (default 3) <br/><br/></li>
 </ul></li>
 </ul>
 
@@ -697,11 +695,21 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <p><br/></p>
 
 <ul>
+<li>More options for the covariance matrix of the random effects
+
+<ul>
+<li>auto-regressive</li>
+<li>compound symmetry</li>
+</ul></li>
+</ul>
+
+<p><br/></p>
+
+<ul>
 <li>Extra models
 
 <ul>
 <li>Conway-Maxwell-Poisson mixed model</li>
-<li>&#8230;</li>
 </ul></li>
 </ul>
 

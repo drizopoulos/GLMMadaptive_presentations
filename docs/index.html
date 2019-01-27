@@ -464,7 +464,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 </ul></li>
 <li><p>A basic example:</p>
 
-<pre class = 'prettyprint lang-r'>mixed_model(y ~ time * group, random = ~ time | id, data = DF,
+<pre class = 'prettyprint lang-r'>mixed_model(fixed = y ~ time * group, random = ~ time | id, data = DF,
         family = binomial(), nAGQ = 15)</pre></li>
 </ul>
 
@@ -646,7 +646,7 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <li>Marginalized coefficients
 
 <ul>
-<li>Heagerty et al have proposed marginalized mixed models<br/> \({\color{red} \Rightarrow}\) <font color = "red">Computationally intensive to fit</font></li>
+<li>Heagerty et al. have proposed marginalized mixed models<br/> \({\color{red} \Rightarrow}\) <font color = "red">Computationally intensive to fit</font></li>
 <li><a href='https://dx.doi.org/10.1111/biom.12707' title=''>Hedeker et al.</a> recently proposed an easier alternative solution</li>
 <li>function <code>marginal_coefs()</code> implements Hedeker&#39;s et al. solution with standard errors</li>
 </ul></li>
@@ -658,7 +658,7 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <li>Separation issues
 
 <ul>
-<li>in logistic, Poisson and negative binomial case we may encounter (complete) separation issues [2]</li>
+<li>in logistic, Poisson and negative binomial case we may encounter (complete) separation [2]</li>
 <li><code>penalized</code> argument of <code>mixed_model()</code> places a Student&#39;s t penalty on the fixed effects</li>
 <li>the user can control scale (default 1) and df (default 3) <br/><br/></li>
 </ul></li>

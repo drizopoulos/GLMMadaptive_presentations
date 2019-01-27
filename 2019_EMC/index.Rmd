@@ -263,7 +263,7 @@ cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
 
 - A basic example:
 ```r
-mixed_model(y ~ time * group, random = ~ time | id, data = DF,
+mixed_model(fixed = y ~ time * group, random = ~ time | id, data = DF,
             family = binomial(), nAGQ = 15)
 ```
 
@@ -399,7 +399,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 <br/>
 
 - Marginalized coefficients
-    + Heagerty et al have proposed marginalized mixed models<br/>
+    + Heagerty et al. have proposed marginalized mixed models<br/>
     ${\color{red} \Rightarrow}$ <font color = "red">Computationally intensive to fit</font>
     + [Hedeker et al.](https://dx.doi.org/10.1111/biom.12707) recently proposed an easier alternative solution
     + function `marginal_coefs()` implements Hedeker's et al. solution with standard errors
@@ -407,7 +407,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 ## A Few extras - 3
 
 - Separation issues
-    + in logistic, Poisson and negative binomial case we may encounter (complete) separation issues [2]
+    + in logistic, Poisson and negative binomial case we may encounter (complete) separation [2]
     + `penalized` argument of `mixed_model()` places a Student's t penalty on the fixed effects 
     + the user can control scale (default 1) and df (default 3)
 <br/><br/>

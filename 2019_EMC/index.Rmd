@@ -223,7 +223,7 @@ cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
 
 <div style="float: center; text-align: center; width: 750px; border: 3px solid black">
 <br/><br/>
-<strong><font size="6" color = "red">Need for adaptive GH for ${\color{red} > 1}$ random effects</font></strong>
+<strong><font size="6" color = "red">Need for adaptive Gaussian quadrature for ${\color{red} > 1}$ random effects</font></strong>
 <br/><br/>
 </div>
 
@@ -387,7 +387,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 
 <br/>
 
-- Intepretation
+- Interpretation
     + with nonlinear link functions fixed effects have an interpretation conditional on the random effects [1]
     + <font color = "red">(very) often not what we want</font>
 <br/><br/>

@@ -423,7 +423,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 
 <br/>
 
-- Specialized website: [https://drizopoulos.github.io/GLMMadaptive/](https://drizopoulos.github.io/GLMMadaptive/)
+- Dedicated website: [https://drizopoulos.github.io/GLMMadaptive/](https://drizopoulos.github.io/GLMMadaptive/)
     
 # What the future holds...
 

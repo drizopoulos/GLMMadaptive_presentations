@@ -114,7 +114,7 @@ ${\color{red} \Rightarrow}$ <font color = "black">Several solutions available in
 <br/>
 
 1. Approximation of the integrand
-    + make it look as normal for which we know the solution
+    + make it look like a normal for which we know the solution
     <br/><br/>
 2. Approximation of the integral
     + finite sum over a grid
@@ -245,7 +245,7 @@ cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))
 
 ## Model fitting
 
-- The basic model fitting function is `GLMMadaptive::mixed_model()`
+- The basic model-fitting function is `GLMMadaptive::mixed_model()`
 
 <br/>
 
@@ -407,7 +407,7 @@ vignette("Dynamic_Predictions", package = "GLMMadaptive")
 ## A Few extras - 3
 
 - Separation issues
-    + in logistic, Poisson and negative binomial case we may encounter (complete) separation [2]
+    + in logistic, Poisson and negative binomial data we may encounter (complete) separation [2]
     + `penalized` argument of `mixed_model()` places a Student's t penalty on the fixed effects 
     + the user can control scale (default 1) and df (default 3)
 <br/><br/>

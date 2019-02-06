@@ -155,7 +155,7 @@ ${\color{red} \Rightarrow}$ <font color = "black">Several solutions available in
 
 ## Mixed model packages in R - 1
 
-- `lme4::lmer()`
+- `lme4::glmer()`
     + Laplace approximation as default
     + <font color = "red">adaptive Gaussian quadrature only for scalar random effects</font>
 <br/><br/>

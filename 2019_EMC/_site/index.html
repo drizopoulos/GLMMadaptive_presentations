@@ -4,7 +4,6 @@
   <title>GLMMadaptive: Mixed Models for Non-Normal Data in R</title>
 
   <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="generator" content="pandoc" />
 
@@ -87,6 +86,10 @@
       transition: opacity 0.6s ease-in 0.4s;
       opacity: 0;
     }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
 
     slides > slide:not(.nobackground):before {
       font-size: 12pt;
@@ -141,7 +144,7 @@
 <li>Longitudinal data</li>
 <li>Clustered data</li>
 <li>Multilevel data</li>
-<li>&#8230;</li>
+<li>…</li>
 </ul></li>
 </ul>
 
@@ -395,14 +398,14 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 <pre class = 'prettyprint lang-r'>cbind(Laplace = fixef(gm_Laplace)$cond, AGQ_25 = fixef(gm_AGQ25))</pre>
 
 <pre >##                 Laplace     AGQ_25
-## (Intercept) -0.06702286 -3.1900355
-## sppPR       -0.52092708  0.1976119
-## sppDM        0.22457540  0.9137361
-## sppEC-A     -0.19548416  0.6538284
-## sppEC-L      0.64672238  1.4999425
-## sppDES-L     0.60513701  0.9589269
-## sppDF        0.04602476  0.3426018
-## minedno      1.01446593  0.7137289</pre>
+## (Intercept) -0.06702286 -3.1542742
+## sppPR       -0.52092708  0.1455919
+## sppDM        0.22457540  0.8615794
+## sppEC-A     -0.19548416  0.6018137
+## sppEC-L      0.64672238  1.4663818
+## sppDES-L     0.60513701  0.9106184
+## sppDF        0.04602476  0.3059224
+## minedno      1.01446593  0.7294535</pre>
 
 </article></slide><slide class=""><hgroup><h2>Mixed model packages in R - 2</h2></hgroup><article  id="mixed-model-packages-in-r---2">
 
@@ -462,11 +465,11 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 <li>mixed effects logistic regression <code>family = binomial()</code></li>
 <li>mixed effects Poisson regression <code>family = poisson()</code></li>
 </ul></li>
-<li><p>A basic example:</p>
+<li>A basic example:</li>
+</ul>
 
 <pre class = 'prettyprint lang-r'>mixed_model(fixed = y ~ time * group, random = ~ time | id, data = DF,
-        family = binomial(), nAGQ = 15)</pre></li>
-</ul>
+            family = binomial(), nAGQ = 15)</pre>
 
 <pre class = 'prettyprint lang-r'>vignette(&quot;GLMMadaptive_basics&quot;, package = &quot;GLMMadaptive&quot;)</pre>
 
@@ -479,7 +482,7 @@ gm_AGQ25 &lt;- mixed_model(count ~ spp + mined, random = ~ 1 | site,
 
 <ul>
 <li>negative binomial mixed model <code>family = negative.binomial()</code></li>
-<li>Student&#39;s-t mixed model <code>family = students.t()</code></li>
+<li>Student’s-t mixed model <code>family = students.t()</code></li>
 <li>Beta mixed model <code>family = beta.fam()</code></li>
 </ul></li>
 </ul>
@@ -646,9 +649,9 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <li>Marginalized coefficients
 
 <ul>
-<li>Heagerty et al. have proposed marginalized mixed models<br/> \({\color{red} \Rightarrow}\) <font color = "red">Computationally intensive to fit</font></li>
+<li>Heagerty et al. have proposed marginalized mixed models<br/> \({\color{red} \Rightarrow}\) <font color = "red">Computationally intensive to fit</font></li>
 <li><a href='https://dx.doi.org/10.1111/biom.12707' title=''>Hedeker et al.</a> recently proposed an easier alternative solution</li>
-<li>function <code>marginal_coefs()</code> implements Hedeker&#39;s et al. solution with standard errors</li>
+<li>function <code>marginal_coefs()</code> implements Hedeker’s et al. solution with standard errors</li>
 </ul></li>
 </ul>
 
@@ -659,7 +662,7 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 
 <ul>
 <li>in logistic, Poisson and negative binomial data we may encounter (complete) separation [2]</li>
-<li><code>penalized</code> argument of <code>mixed_model()</code> places a Student&#39;s t penalty on the fixed effects</li>
+<li><code>penalized</code> argument of <code>mixed_model()</code> places a Student’s t penalty on the fixed effects</li>
 <li>the user can control scale (default 1) and df (default 3) <br/><br/></li>
 </ul></li>
 </ul>
@@ -680,7 +683,7 @@ vignette(&quot;Dynamic_Predictions&quot;, package = &quot;GLMMadaptive&quot;)</p
 <li>Dedicated website: <a href='https://drizopoulos.github.io/GLMMadaptive/' title=''>https://drizopoulos.github.io/GLMMadaptive/</a></li>
 </ul>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>What the future holds&#8230;</h2></hgroup><article  id="what-the-future-holds...">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>What the future holds…</h2></hgroup><article  id="what-the-future-holds">
 
 </article></slide><slide class=""><hgroup><h2>Future plans</h2></hgroup><article  id="future-plans">
 
